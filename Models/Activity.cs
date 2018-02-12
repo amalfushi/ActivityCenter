@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
 
-namespace DojoActivities.Models
+namespace ActivityCenter.Models
 {
     public class Activity
     {

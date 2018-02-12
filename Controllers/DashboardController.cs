@@ -5,16 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using DojoActivities.Models;
+using ActivityCenter.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace DojoActivities.Controllers
+namespace ActivityCenter.Controllers
 {
     public class DashboardController : Controller
     {
-        private DojoActivitiesContext _context;
+        private ActivityCenterContext _context;
 
-        public DashboardController(DojoActivitiesContext context)
+        public DashboardController(ActivityCenterContext context)
         {
             _context = context;
         }

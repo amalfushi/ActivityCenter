@@ -2,19 +2,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DojoActivities.Models;
+using ActivityCenter.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace DojoActivities.Controllers
+namespace ActivityCenter.Controllers
 {
     
     public class UserController : Controller
     {
-        private DojoActivitiesContext _context;
-        public UserController(DojoActivitiesContext context)
+        private ActivityCenterContext _context;
+        public UserController(ActivityCenterContext context)
         {
             _context = context;
         }

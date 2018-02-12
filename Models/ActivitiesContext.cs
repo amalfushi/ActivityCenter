@@ -1,10 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace DojoActivities.Models
+namespace ActivityCenter.Models
 {
-    public class DojoActivitiesContext : DbContext
+    public class ActivityCenterContext : DbContext
     {
-        public DojoActivitiesContext(DbContextOptions<DojoActivitiesContext> options) : base (options){}
+        public ActivityCenterContext(DbContextOptions<ActivityCenterContext> options) : base (options){}
 
         public DbSet<User> users { get; set; }
         public DbSet<Activity> activities { get; set; }
