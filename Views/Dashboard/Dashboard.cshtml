@@ -1,0 +1,37 @@
+@{
+    ViewData["Title"] = "Activity Center: Login & Register";
+}
+@using DojoActivities.Models
+
+<div id="main">
+    <table class="table table-striped">
+        <thead>
+            <th>Activity</th>
+            <th>Date and Time</th>
+            <th>Duration</th>
+            <th>Event Coordinator</th>
+            <th>Number of Participants</th>
+            <th>Actions</th>
+        </thead>
+        @foreach(var a in Model)
+        {
+            <tr>
+                <td><a class="bold" href="/activity/@a.ActivityId/show">@a.Title</a></td>
+                <td>@String.Format("{0:g}", @a.DateTime)</td>
+                <td>@a.Duration @a.DurationType</td>
+                <td>@a.Creator.FirstName</td>
+                <td>@a.RSVPs.Count</td>
+                @if(@ViewBag.LoggedUser.UserId == @a.Creator.UserId){
+                    <td><a class="bold" href="/activity/@a.ActivityId/delete">Delete</a></td>
+                } else if (@ViewBag.UserAttending.Contains(@a.ActivityId)){
+                    <td><a class="bold"href="/activity/@a.ActivityId/leave">Leave</a></td>
+                } else if (@ViewBag.CannotAttend.Contains(@a.ActivityId)){
+                    <td class="bold">Cannot Attend, Conflicting Activity</td>
+                } else {
+                    <td><a class="bold" href="/activity/@a.ActivityId/join">Join</a></td>
+                }
+            </tr>
+        }
+    </table>
+</div>
+<a href="/activity/new" class="btn btn-primary">Add New Activity!</a>

@@ -1,0 +1,38 @@
+@model DojoActivities.Models.Activity
+@{
+    ViewData["Title"] = @Model.Title;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <h2>@Model.Title</h2>
+            <br>
+            @if(@ViewBag.LoggedUser.UserId == @Model.Creator.UserId){
+                <a href="/activity/@Model.ActivityId/delete" class="btn btn-primary">Delete</a>
+            } else if(@ViewBag.UserAttending.Contains(@Model.ActivityId)) {
+                <a href="/activity/@Model.ActivityId/leave" class="btn btn-primary">Leave</a>
+            } else if (@ViewBag.CannotAttend.Contains(@Model.ActivityId)){
+                <a class="btn btn-primary disabled">Conflicting Activity</a>
+            } else {
+                <a href="/activity/@Model.ActivityId/join" class="btn btn-primary">Join</a>
+            }
+            <br><br>
+            <h4>Event Coordinator: @Model.Creator.FirstName @Model.Creator.LastName</h4>
+        </div>
+        
+        <div class="col-sm-4">
+            <h3>Description</h3>
+            <br>
+            <p class="indent">@Model.Description</p>
+        </div>
+
+        <div class="col-sm-4">
+            <h3>Participants:</h3>
+            <br>
+            @foreach(var rsvp in @Model.RSVPs){
+                <h5 class="indent">@rsvp.Attendee.FirstName</h5>
+            }
+        </div>
+    </div>
+</div>
